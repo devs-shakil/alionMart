@@ -33,7 +33,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/alionMart')
 .catch((error) => console.error("failed to connect", error));
 
 
-// routes middleware
+// routes middleware 
 readdirSync("./routes").map(r => app.use("/v1", require(`./routes/${r}`)));
 
 
