@@ -54,7 +54,7 @@ exports.register = async (req, res) => {
         console.log(error)
     }
 }
-
+ 
 
 
 exports.login = async (req, res) =>{
@@ -84,8 +84,17 @@ exports.login = async (req, res) =>{
         //5. create sign jwt
         const token = jwt.sign({_id: user._id}, process.env.JWT_SECRET, {expiresIn: "7d", })
 
-        
+        //send respones
+        res.json({
+            user: {
+                name: user.name,
+                email: user.email,
+                role: user.role,
+                address: user.address
+            },
+            token,
+        })
     } catch (error) {
-        
+        console.log(error)
     }
 }
